@@ -73,7 +73,56 @@ def count_number(A: int, B: int, C: int) -> None:
     arr[int(i)] = arr[int(i)] + 1
   for i in arr:
     print(i)
-A = input()
-B = input()
-C = input()
-count_number(150,266,427)
+
+
+count_number(150, 266, 427)
+
+
+#백준 1475 방번호
+def set_room_number(number: str) -> None:
+  arr = [0 for i in range(10)]
+
+  for i in number:
+    if i == "9" or i == "6":
+      six = arr[int(6)]
+      nine = arr[int(9)]
+      if six < nine:
+        arr[6] = arr[6] + 1
+      elif six > nine:
+        arr[9] = arr[9] + 1
+      else:
+        arr[int(i)] = arr[int(i)] + 1
+    else:
+      arr[int(i)] = arr[int(i)] + 1
+
+  print(max(arr))
+
+
+#room_number = input("방번호 입력해줘")
+#set_room_number(room_number)
+
+
+#백준 3273번
+def sum_number(length: int, num_list: list, result: int):
+  sum_list = [0 for i in range(max(num_list))]
+  count = 0
+  for i in num_list:
+    val = result - i
+    if sum_list[val - 1] == 0:
+      sum_list[i - 1] = 1
+    else:
+      count += 1
+  print("백준 3273번 답 {}".format(count))
+
+
+sum_number(9, [5, 12, 7, 10, 9, 1, 2, 3, 11], 13)
+
+
+#백준 1080번
+def count_contain_number(contain_list: list, contain_number:int):
+  count = 0
+  for i in contain_list:
+    if i == contain_number:
+      count += 1
+
+  print("백준 1080번 답 {}".format(count))
