@@ -91,11 +91,13 @@ list.addAfter(second_node,123)
 list.display()
 
 #백준 1406 에디터 문제
+def editor(text:str,press:list):
+  print(0)
 
-"""
-  손코딩 문제 
-  1. 원형 연결 리스트 내의 임의의 노드 하나가 주어졌을 때 해당 List 길이를
-  효율적으로 구하는 방법
-    -> 동일한 노드가 나올때 까지 순회하면 된다
-  2.
-"""
+str = input()
+N = int(input())
+BiLinkedList()
+for i in range(N):
+  a = input().split()
+
+  print(a)
