@@ -7,14 +7,46 @@
     - 재귀함수가 자기 자신을 부를 때 스택 영역에 계속 누적이 됨
 """
 
+
 # 백준 1629
-def get_mod(a,b,c):
+def get_mod(a, b, c):
   if b == 1:
-    return a%c
-  if b%2 == 0:
-    return (get_mod(a,b//2,c)**2)%c
-  return (get_mod(a,b//2,c)**2 * a)%c
+    return a % c
+  if b % 2 == 0:
+    return (get_mod(a, b // 2, c) ** 2) % c
+  return (get_mod(a, b // 2, c) ** 2 * a) % c
+
 
 # l,m,n = map(int,input().split())
 # print(get_mod(l,m,n))
 
+# 백준 1914
+def hanoi(n, a, b):
+  if n == 1:
+    print(a, b)
+    return
+  hanoi(n - 1, a, 6 - a - b)
+  print(a, b)
+  hanoi(n - 1, 6 - a - b, b)
+
+
+# n = int(input())
+# print(2**n - 1)
+# if n <= 20: hanoi(n, 1, 3)
+
+# 백준 1074번
+def func_z(length, r, c):
+  if length == 0:
+    return 0
+  half = 2 ** (length - 1)
+  if r < half and c < half:
+    return func_z(length - 1, r, c)
+  elif r < half and c >= half:
+    return half*half + func_z(length - 1, r, c)
+  elif r >= half and c < half:
+    return 2 * half*half + func_z(length - 1, r, c)
+  return 3 * half*half + func_z(length - 1, r, c)
+
+
+# l, n, m = map(int, input().split())
+# print(func_z(l, n, m))
