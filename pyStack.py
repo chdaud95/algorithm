@@ -77,40 +77,96 @@ def check_balance(text: str) -> str:
 # print(stick_count)
 
 # 백준 2504
-stack = []  # 스택
-res = 1  # result에 더해주기 전 임시 변수
-result = 0  # 결과 변수
-p = list(input())  # 입력값
+# stack = []  # 스택
+# res = 1  # result에 더해주기 전 임시 변수
+# result = 0  # 결과 변수
+# p = list(input())  # 입력값
+#
+# # 1~4번째 과정 시작
+# for i in range(len(p)):
+#   if p[i] == '(':
+#     res *= 2
+#     stack.append(p[i])
+#
+#   elif p[i] == '[':
+#     res *= 3
+#     stack.append(p[i])
+#
+#   elif p[i] == ')':
+#     if not stack or stack[-1] != '(':
+#       result = 0
+#       break
+#     if p[i - 1] == '(': result += res
+#     res //= 2
+#     stack.pop()
+#
+#   elif p[i] == ']':
+#     if not stack or stack[-1] != '[':
+#       result = 0
+#       break
+#     if p[i - 1] == '[': result += res
+#     res //= 3
+#     stack.pop()
+#
+# # 결과 출력
+# if stack:
+#   print(0)
+# else:
+#   print(result)
 
-# 1~4번째 과정 시작
-for i in range(len(p)):
-  if p[i] == '(':
-    res *= 2
-    stack.append(p[i])
+# 백준 9012
+# def check_vps(parenthesis: str):
+#   arr = []
+#   answer = "YES"
+#   for i in parenthesis:
+#     if i == "(":
+#       arr.append(i)
+#     else:
+#       if not bool(arr):
+#         answer = "NO"
+#         break
+#       check = arr.pop()
+#       if check == ")":
+#         answer = "NO"
+#   if arr: answer = "NO"
+#   print(answer)
+#
+#
+# n = int(input())
+# for _ in range(n):
+#   text = input()
+#   check_vps(text)
 
-  elif p[i] == '[':
-    res *= 3
-    stack.append(p[i])
+# 백준 2504
+def value_parenthesis(text: str):
+  arr = []
+  tmp = 1
+  answer = 0
+  for i in range(len(text)):
+    if text[i] == '(':
+      arr.append(text[i])
+      tmp *= 2
+    elif text[i] == '[':
+      arr.append(text[i])
+      tmp *= 3
+    elif text[i] == ')':
+      if not arr or arr[-1] == '[':
+        answer = 0
+        break
+      if text[i-1] == '(':
+        answer += tmp
+      arr.pop()
+      tmp //= 2
+    elif text[i] == ']':
+      if not arr or arr[-1] == '(':
+        answer = 0
+        break
+      if text[i-1] == '[':
+        answer += tmp
+      arr.pop()
+      tmp //= 3
+  if arr : answer = 0
+  print(answer)
 
-  elif p[i] == ')':
-    if not stack or stack[-1] != '(':
-      result = 0
-      break
-    if p[i - 1] == '(': result += res
-    res //= 2
-    stack.pop()
-
-  elif p[i] == ']':
-    if not stack or stack[-1] != '[':
-      result = 0
-      break
-    if p[i - 1] == '[': result += res
-    res //= 3
-    stack.pop()
-
-# 결과 출력
-if stack:
-  print(0)
-else:
-  print(result)
-
+n = input()
+value_parenthesis(n)
