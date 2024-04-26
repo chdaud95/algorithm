@@ -2,6 +2,7 @@
   수식의 괄호 쌍, 전위/중위/후위 표기법, DFS, Flood Fill 등에서 사용
 """
 import re
+import sys
 
 
 class Stack:
@@ -138,35 +139,74 @@ def check_balance(text: str) -> str:
 #   check_vps(text)
 
 # 백준 2504
-def value_parenthesis(text: str):
-  arr = []
-  tmp = 1
-  answer = 0
-  for i in range(len(text)):
-    if text[i] == '(':
-      arr.append(text[i])
-      tmp *= 2
-    elif text[i] == '[':
-      arr.append(text[i])
-      tmp *= 3
-    elif text[i] == ')':
-      if not arr or arr[-1] == '[':
-        answer = 0
-        break
-      if text[i-1] == '(':
-        answer += tmp
-      arr.pop()
-      tmp //= 2
-    elif text[i] == ']':
-      if not arr or arr[-1] == '(':
-        answer = 0
-        break
-      if text[i-1] == '[':
-        answer += tmp
-      arr.pop()
-      tmp //= 3
-  if arr : answer = 0
-  print(answer)
+# def value_parenthesis(text: str):
+#   arr = []
+#   tmp = 1
+#   answer = 0
+#   for i in range(len(text)):
+#     if text[i] == '(':
+#       arr.append(text[i])
+#       tmp *= 2
+#     elif text[i] == '[':
+#       arr.append(text[i])
+#       tmp *= 3
+#     elif text[i] == ')':
+#       if not arr or arr[-1] == '[':
+#         answer = 0
+#         break
+#       if text[i-1] == '(':
+#         answer += tmp
+#       arr.pop()
+#       tmp //= 2
+#     elif text[i] == ']':
+#       if not arr or arr[-1] == '(':
+#         answer = 0
+#         break
+#       if text[i-1] == '[':
+#         answer += tmp
+#       arr.pop()
+#       tmp //= 3
+#   if arr : answer = 0
+#   print(answer)
+#
+# n = input()
+# value_parenthesis(n)
 
-n = input()
-value_parenthesis(n)
+#백준 10773
+
+# def sum_num():
+#   n = int(input())
+#   stack = []
+#   for _ in range(n):
+#     num = int(sys.stdin.readline())
+#     if num == 0:
+#       stack.pop()
+#     else:
+#       stack.append(num)
+#   print(sum(stack))
+#
+# sum_num()
+
+#백준 1874
+# def s_1817():
+#   n = int(input())
+#   stack = []
+#   answer = []
+#   now = 1
+#   for i in range(n):
+#     num = int(input())
+#     while num >= now:
+#       stack.append(now)
+#       answer.append("+")
+#       now += 1
+#
+#     if stack[-1] == num:
+#       stack.pop()
+#       answer.append("-")
+#     else:
+#       print("NO")
+#       return
+#   for i in answer:
+#     print(i)
+#
+# s_1817()
