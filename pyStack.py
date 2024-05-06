@@ -210,3 +210,42 @@ def check_balance(text: str) -> str:
 #     print(i)
 #
 # s_1817()
+
+# def s_17298():
+#   n = int(input())
+#   arr = list(map(int, input().split()))
+#   stack = [0]
+#   answer = [-1]*n
+#
+#   for i in range(1,n):
+#     while stack and arr[stack[-1]] < arr[i]:
+#       answer[stack.pop()] = arr[i]
+#     stack.append(i)
+#   print(*answer)
+# s_17298()
+
+# TODO
+# from collections import deque
+# def s_3015():
+#   n = int(input())
+#   arr = [int(input()) for _ in range(n)]
+#   stack = [arr[0]]
+#   deq = deque()
+#   result = 0
+#   for i in range(1,n):
+#     count = 0
+#     while stack:
+#       if stack[-1] >= arr[i]:
+#         deq.append(stack.pop())
+#       else:
+#         count += 1
+#         stack.pop()
+#
+#     while deq:
+#       stack.append(deq.pop())
+#     result += len(stack) + count
+#     stack.append(arr[i])
+#
+#   print(result)
+#
+# s_3015()
